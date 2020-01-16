@@ -15,5 +15,6 @@ import {JSDOM} from 'jsdom'
     name: name = d.length === 2 ? d[0].textContent : name,
     text: (d.length === 2 ? d[1] : d[0]).textContent,
   }))
-  fs.writeFileSync('rumor.json', JSON.stringify(rumor))
+  fs.writeFileSync('../dist/scraping-rumor.json', JSON.stringify(rumor))
+  console.log('I wrote in it.')
 })()
