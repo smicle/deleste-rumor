@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <h1>デレステウワサクイズ</h1>
     <v-card class="card-name">
       <v-card-title class="body-2 red-text">名前</v-card-title>
       <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ name }}</v-card-text>

@@ -6,7 +6,11 @@
   </v-app>
 </template>
 
-<style>
+<style lang="scss">
+* :not(.v-icon) {
+  font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif !important;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
