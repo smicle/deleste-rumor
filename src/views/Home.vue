@@ -5,6 +5,7 @@
       <v-card-title class="body-2 red-text">名前</v-card-title>
       <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ name }}</v-card-text>
     </v-card>
+    <!-- <v-img :src="require('@/assets/img/島村卯月.png')" height="91px"></v-img> -->
     <v-card class="card-rumor">
       <v-card-title class="body-2">ウワサ</v-card-title>
       <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ text }}</v-card-text>
@@ -17,7 +18,7 @@
 
 <script lang="ts">
 import {Component, Emit, Prop, Vue} from 'vue-property-decorator'
-import rumor from '../json/scraping-rumor.json'
+import rumor from '@/json/scraping-rumor.json'
 const randomNumber = require('random-number-csprng')
 
 @Component
@@ -47,7 +48,7 @@ export default class Home extends Vue {
   margin: 0 auto;
 }
 .card-name {
-  min-height: 90px;
+  min-height: 92px;
   margin: 15px;
 }
 .card-rumor {
