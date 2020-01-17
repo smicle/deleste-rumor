@@ -47,7 +47,7 @@ export default class Home extends Vue {
   margin: 0 auto;
 }
 .card-name {
-  min-height: 105px;
+  min-height: 90px;
   margin: 15px;
 }
 .card-rumor {

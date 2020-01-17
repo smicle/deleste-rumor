@@ -13,6 +13,7 @@
     "@types/node-fetch": "^2.5.4",
     "ajv": "^6.10.2",
     "core-js": "^3.4.4",
+    "firebase": "^7.7.0",
     "jsdom": "^16.0.0",
     "material-design-icons-iconfont": "^5.0.1",
     "node": "^13.6.0",
