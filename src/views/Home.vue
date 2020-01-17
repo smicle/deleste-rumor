@@ -11,7 +11,10 @@
         </v-card>
       </v-col>
       <v-col cols="4" style="margin-left: 0; padding-left: 0">
-        <img :class="`idol ${bool ? 'd-none' : ''}`" :src="require(`@/assets/img/${name}.png`)" />
+        <img
+          :class="`idol ${bool ? 'opacity-0' : ''}`"
+          :src="require(`@/assets/img/${name}.png`)"
+        />
       </v-col>
     </v-row>
     <v-card class="card-rumor">
@@ -62,5 +65,8 @@ export default class Home extends Vue {
   margin-top: 12px;
   padding: 0;
   height: 92px;
+}
+.opacity-0 {
+  opacity: 0;
 }
 </style>
