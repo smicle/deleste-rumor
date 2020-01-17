@@ -1,5 +1,8 @@
 # deleste-rumor
 
+## Site link
+https://deleste-rumor.web.app/
+
 ## Project setup
 ```
 yarn install
