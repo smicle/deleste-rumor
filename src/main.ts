@@ -5,7 +5,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import App from '@/App.vue'
 import router from '@/plugins/router'
 import vuetify from '@/plugins/vuetify'
-// import '@/plugins/firebase'
+import '@/plugins/firebase'
 
 Vue.config.productionTip = false
 
