@@ -5,11 +5,13 @@
       <v-col cols="8" style="margin-right: 0; padding-right: 0">
         <v-card class="card-name">
           <v-card-title class="body-2 red-text">名前</v-card-title>
-          <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ name }}</v-card-text>
+          <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">
+            {{ bool ? '' : name }}
+          </v-card-text>
         </v-card>
       </v-col>
       <v-col cols="4" style="margin-left: 0; padding-left: 0">
-        <img class="idol" v-if="!bool" :src="require(`@/assets/img/${name}.png`)" />
+        <img :class="`idol ${bool ? 'd-none' : ''}`" :src="require(`@/assets/img/${name}.png`)" />
       </v-col>
     </v-row>
     <v-card class="card-rumor">
@@ -39,8 +41,6 @@ export default class Home extends Vue {
     if (this.bool) {
       this.rand = await randomNumber(0, rumor.length)
       this.text = rumor[this.rand].text
-      this.name = ''
-    } else {
       this.name = rumor[this.rand].name
     }
   }
