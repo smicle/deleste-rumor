@@ -1,4 +1,19 @@
 # deleste-rumor
 
-## link
-https://imascg-slstage-wiki.gamerch.com/%E3%82%A6%E3%83%AF%E3%82%B5
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
