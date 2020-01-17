@@ -1,11 +1,17 @@
 <template>
-  <div class="home">
+  <v-container class="home" grid-list-sm>
     <h1>デレステウワサクイズ</h1>
-    <v-card class="card-name">
-      <v-card-title class="body-2 red-text">名前</v-card-title>
-      <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ name }}</v-card-text>
-    </v-card>
-    <!-- <v-img :src="require('@/assets/img/島村卯月.png')" height="91px"></v-img> -->
+    <v-row>
+      <v-col cols="8" style="margin-right: 0; padding-right: 0">
+        <v-card class="card-name">
+          <v-card-title class="body-2 red-text">名前</v-card-title>
+          <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ name }}</v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="4" style="margin-left: 0; padding-left: 0">
+        <img class="idol" v-if="!bool" :src="require(`@/assets/img/${name}.png`)" />
+      </v-col>
+    </v-row>
     <v-card class="card-rumor">
       <v-card-title class="body-2">ウワサ</v-card-title>
       <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ text }}</v-card-text>
@@ -13,7 +19,7 @@
     <v-btn @click="toggle" :color="bool ? 'warning' : 'info'">
       {{ bool ? '結果' : '次へ' }}
     </v-btn>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -44,14 +50,17 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
-.home {
-  margin: 0 auto;
-}
 .card-name {
   min-height: 92px;
   margin: 15px;
 }
 .card-rumor {
   margin: 15px;
+}
+.idol {
+  right: -50px;
+  margin-top: 12px;
+  padding: 0;
+  height: 92px;
 }
 </style>
