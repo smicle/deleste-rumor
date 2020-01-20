@@ -1,50 +1,72 @@
 <template>
-  <v-container class="home" grid-list-sm>
+  <v-container class="home">
     <h1>デレステウワサクイズ</h1>
+
     <v-row>
-      <v-col cols="8" style="margin-right: 0; padding-right: 0">
-        <v-card class="card-name">
-          <v-card-title class="body-2 red-text">名前</v-card-title>
-          <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">
-            {{ bool ? '' : name }}
-          </v-card-text>
-        </v-card>
+      <v-col cols="8" :style="style.pr_0">
+        <IdolCard :style="style.mr_0 + style.H_92">
+          <template v-slot:title>名前</template>
+          <template v-slot:text>{{ flag ? '' : idol.name }}</template>
+        </IdolCard>
       </v-col>
-      <v-col cols="4" style="margin-left: 0; padding-left: 0">
-        <img
-          :class="`idol ${bool ? 'opacity-0' : ''}`"
-          :src="require(`@/assets/img/${name}.png`)"
-        />
+
+      <v-col cols="4" :style="style.pl_0">
+        <img :src="src" :style="style.H_92 + (flag ? style.op_0 : '')" />
       </v-col>
     </v-row>
-    <v-card class="card-rumor">
-      <v-card-title class="body-2">ウワサ</v-card-title>
-      <v-card-text class="body-1" style="color: rgba(0,0,0,.87)">{{ text }}</v-card-text>
-    </v-card>
-    <v-btn @click="toggle" :color="bool ? 'warning' : 'info'">
-      {{ bool ? '結果' : '次へ' }}
-    </v-btn>
+
+    <IdolCard>
+      <template v-slot:title>ウワサ</template>
+      <template v-slot:text>{{ idol.text }}</template>
+    </IdolCard>
+
+    <NextBtn @click="toggle" :flag="flag"></NextBtn>
   </v-container>
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from 'vue-property-decorator'
-import rumor from '@/json/scraping-rumor.json'
+import {Component, Emit, Prop, Vue, Mixins} from 'vue-property-decorator'
+import IdolCard from '@/components/IdolCard.vue'
+import NextBtn from '@/components/NextBtn.vue'
+import rumors from '@/json/scraping-rumor.json'
 const randomNumber = require('random-number-csprng')
 
-@Component
-export default class Home extends Vue {
-  public bool: boolean = true
-  public name: string = ''
-  public text: string = ''
-  public rand: number = 0
+interface Idol {
+  name: string
+  text: string
+}
 
-  public async toggle() {
-    this.bool = !this.bool
-    if (this.bool) {
-      this.rand = await randomNumber(0, rumor.length)
-      this.text = rumor[this.rand].text
-      this.name = rumor[this.rand].name
+@Component
+export class MixinStyle extends Vue {
+  private style = {
+    mr_0: 'margin-right: 0;',
+    pr_0: 'padding-right: 0;',
+    pl_0: 'padding-left: 0;',
+    H_92: 'height: 92px;',
+    op_0: 'opacity: 0;',
+  }
+}
+
+@Component({
+  components: {
+    IdolCard,
+    NextBtn,
+  },
+})
+export default class Home extends Mixins(MixinStyle) {
+  private flag: boolean = true
+  private idol: Idol = {name: '', text: ''}
+  private rand: number = 0
+  private src: string = ''
+
+  private async toggle() {
+    this.flag = !this.flag
+    if (this.flag) {
+      this.rand = await randomNumber(0, rumors.length)
+      const rumor = rumors[this.rand]
+
+      this.idol = {name: rumor.name, text: rumor.text}
+      this.src = require(`@/assets/img/${rumor.name}.png`)
     }
   }
 
@@ -52,21 +74,4 @@ export default class Home extends Vue {
 }
 </script>
 
-<style scoped>
-.card-name {
-  min-height: 92px;
-  margin: 15px;
-}
-.card-rumor {
-  margin: 15px;
-}
-.idol {
-  right: -50px;
-  margin-top: 12px;
-  padding: 0;
-  height: 92px;
-}
-.opacity-0 {
-  opacity: 0;
-}
-</style>
+<style scoped></style>
