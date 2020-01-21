@@ -4,9 +4,9 @@ name: default
 
 steps:
 - name: greeting
-  image: centos
+  image: ubuntu
   commands:
-  - echo hello world
+  - ls
 
 trigger:
   event:
