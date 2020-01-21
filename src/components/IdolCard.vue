@@ -1,9 +1,9 @@
 <template>
-  <v-card>
+  <v-card class="ma-4 mt-0">
     <v-card-title class="body-2">
       <slot name="title"></slot>
     </v-card-title>
-    <v-card-text class="body-1">
+    <v-card-text class="body-1" :style="bl">
       <slot name="text"></slot>
     </v-card-text>
   </v-card>
@@ -13,16 +13,9 @@
 import {Component, Vue} from 'vue-property-decorator'
 
 @Component
-export default class IdolCard extends Vue {}
+export default class IdolCard extends Vue {
+  private bl = 'color: rgba(0, 0, 0, 0.87);'
+}
 </script>
 
 <style scoped></style>
-<style>
-.v-card {
-  margin: 15px;
-  margin-top: 0;
-}
-.theme--light.v-card > .v-card__text {
-  color: rgba(0, 0, 0, 0.87);
-}
-</style>
