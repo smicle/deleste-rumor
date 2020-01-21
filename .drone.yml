@@ -6,6 +6,7 @@ steps:
 - name: greeting
   image: jankoppe/yarn
   commands:
+  - yarn install
   - yarn build
 
 trigger:
