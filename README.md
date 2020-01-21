@@ -1,8 +1,8 @@
 # deleste-rumor
 
 ## Site link
-Web Site: https://deleste-rumor.web.app/
-Console:  https://console.firebase.google.com/u/1/project/deleste-rumor/overview
+Web Site: https://deleste-rumor.web.app/  
+Console:  https://console.firebase.google.com/u/1/project/deleste-rumor/overview  
 
 ## Project setup
 ```
