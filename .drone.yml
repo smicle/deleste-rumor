@@ -4,6 +4,7 @@ name: default
 
 steps:
 - name: greeting
+  image: centos
   commands:
   - echo hello world
 
