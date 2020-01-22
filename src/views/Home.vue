@@ -23,7 +23,7 @@
     <NextBtn @click="resultToggle" :isResult="isResult" :promise="promise"></NextBtn>
 
     <div class="d-flex flex-row-reverse pt-2 pr-4">
-      <v-btn to="/about" class="caption" text color="blue darken-3" height="20" width="70">
+      <v-btn to="/about" text class="caption" color="blue darken-3" height="20" width="70">
         about
       </v-btn>
     </div>
