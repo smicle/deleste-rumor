@@ -1,6 +1,6 @@
 <template>
   <v-container class="home">
-    <h1>デレステウワサクイズ</h1>
+    <h1 class="font-weight-medium">デレステウワサクイズ</h1>
 
     <v-row>
       <v-col cols="8" class="pr-0">
