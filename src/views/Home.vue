@@ -1,6 +1,6 @@
 <template>
   <v-container class="home">
-    <h1>デレステウワサクイズ</h1>
+    <h1 class="font-weight-medium">デレステウワサクイズ</h1>
 
     <v-row>
       <v-col cols="8" class="pr-0">
@@ -21,6 +21,12 @@
     </IdolCard>
 
     <NextBtn @click="resultToggle" :isResult="isResult" :promise="promise"></NextBtn>
+
+    <div class="d-flex flex-row-reverse pt-2 pr-4">
+      <v-btn to="/about" text class="caption" color="blue darken-3" height="20" width="70">
+        about
+      </v-btn>
+    </div>
   </v-container>
 </template>
 
