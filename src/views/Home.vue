@@ -6,12 +6,12 @@
       <v-col cols="8" class="pr-0">
         <IdolCard class="mr-0" :style="H_92">
           <template v-slot:title>名前</template>
-          <template v-slot:text>{{ store.isResult ? '' : idol.name }}</template>
+          <template v-slot:text>{{ isResult ? '' : idol.name }}</template>
         </IdolCard>
       </v-col>
 
       <v-col cols="4" class="pl-0">
-        <img :src="idol.src" :style="H_92 + (store.isResult ? op_0 : '')" />
+        <img :src="idol.src" :style="H_92 + (isResult ? op_0 : '')" />
       </v-col>
     </v-row>
 
@@ -20,7 +20,7 @@
       <template v-slot:text>{{ idol.text }}</template>
     </IdolCard>
 
-    <NextBtn @click="resultToggle" :isResult="store.isResult" :promise="store.promise"></NextBtn>
+    <NextBtn @click="resultToggle" :isResult="isResult" :promise="promise"></NextBtn>
   </v-container>
 </template>
 
@@ -49,12 +49,13 @@ export class MixinStyle extends Vue {
   },
 })
 export default class Home extends Mixins(MixinStyle) {
-  private store = {isResult: true, promise: false}
+  private promise = false
+  private isResult = true
   private idol: Idol = {name: '', text: '', src: ''}
 
   private async resultToggle() {
-    this.store.isResult = !this.store.isResult
-    if (!this.store.isResult) return
+    this.isResult = !this.isResult
+    if (!this.isResult) return
 
     const rand: number = await require('random-number-csprng')(0, rumors.length)
     const rumor = rumors[rand]
@@ -64,8 +65,8 @@ export default class Home extends Mixins(MixinStyle) {
       src: require(`@/assets/img/${rumor.name}.png`),
     }
 
-    this.store.promise = true
-    fetch(this.idol.src).then(_ => (this.store.promise = false))
+    this.promise = true
+    fetch(this.idol.src).then(_ => (this.promise = false))
   }
 
   onload = this.resultToggle()
