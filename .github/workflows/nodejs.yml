@@ -20,9 +20,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: yarn install, build
+    - name: npm install, yarn build
       run: |
-        yarn install
+        npm install
         yarn build
     - name: deploy to Firebase Hosting
       run: |
