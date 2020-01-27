@@ -6,21 +6,25 @@
       </v-col>
     </v-row>
 
-    <v-card class="d-flex flex-no-wrap" width="300">
-      <v-avatar class="ma-3" size="110" tile>
-        <img :src="require('@/assets/smicle.jpg')" />
-      </v-avatar>
+    <v-col cols="12">
+      <v-card class="d-flex" width="400">
+        <div>
+          <v-avatar tile class="ma-3" size="110">
+            <img :src="require('@/assets/smicle.jpg')" />
+          </v-avatar>
+        </div>
 
-      <div>
-        <v-card-title class="headline pb-1 pl-1">smicle</v-card-title>
-        <AboutBtn href="https://github.com/smicle" color="grey darken-4" text="GitHub"></AboutBtn>
-        <AboutBtn
-          href="https://twitter.com/smicle_cl"
-          color="blue darken-4"
-          text="Twitter"
-        ></AboutBtn>
-      </div>
-    </v-card>
+        <div>
+          <v-card-title class="headline pb-1 pl-1">smicle</v-card-title>
+          <AboutBtn href="https://github.com/smicle" color="grey darken-4" text="GitHub"></AboutBtn>
+          <AboutBtn
+            href="https://twitter.com/smicle_cl"
+            color="blue darken-4"
+            text="Twitter"
+          ></AboutBtn>
+        </div>
+      </v-card>
+    </v-col>
   </v-container>
 </template>
 
