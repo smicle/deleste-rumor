@@ -32,6 +32,8 @@
 
 <script lang="ts">
 import {Component, Emit, Prop, Vue, Mixins} from 'vue-property-decorator'
+import firebase from 'firebase/app'
+import 'firebase/app'
 import IdolCard from '@/components/IdolCard.vue'
 import NextBtn from '@/components/NextBtn.vue'
 import rumors from '@/json/scraping-rumor.json'
@@ -39,8 +41,10 @@ import rumors from '@/json/scraping-rumor.json'
 interface Idol {
   name: string
   text: string
-  src: string
+  src?: string
 }
+
+const storage = firebase.storage().ref()
 
 @Component
 export class MixinStyle extends Vue {
@@ -68,11 +72,14 @@ export default class Home extends Mixins(MixinStyle) {
     this.idol = {
       name: rumor.name,
       text: rumor.text,
-      src: require(`@/assets/img/${rumor.name}.png`),
     }
-
     this.promise = true
-    fetch(this.idol.src).then(_ => (this.promise = false))
+    this.idol.src = await storage
+      .child(`${rumor.name}.png`)
+      .getDownloadURL()
+      .then(url => url)
+
+    fetch(this.idol.src!).then(_ => (this.promise = false))
   }
 
   onload = this.resultToggle()
