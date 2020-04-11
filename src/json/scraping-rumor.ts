@@ -1,7 +1,6 @@
 import * as fs from 'fs'
 import fetch from 'node-fetch'
 import {JSDOM} from 'jsdom'
-
 ;(async () => {
   const html: string | void = await fetch(
     'https://imascg-slstage-wiki.gamerch.com/%E3%82%A6%E3%83%AF%E3%82%B5'
