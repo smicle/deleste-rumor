@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
@@ -14,7 +15,7 @@
     "acorn": "^7.1.1",
     "ajv": "^6.10.2",
     "core-js": "^3.4.4",
-    "firebase": "^7.7.0",
+    "firebase": "^7.14.1",
     "jsdom": "^16.0.0",
     "material-design-icons-iconfont": "^5.0.1",
     "minimist": "^1.2.5",

@@ -69,15 +69,13 @@ export default class Home extends Mixins(MixinStyle) {
 
     const rand: number = await require('random-number-csprng')(0, rumors.length)
     const rumor = rumors[rand]
+
+    this.promise = true
     this.idol = {
       name: rumor.name,
       text: rumor.text,
+      src: require(`@/assets/img/${rumor.name}.png`),
     }
-    this.promise = true
-    this.idol.src = await storage
-      .child(`${rumor.name}.png`)
-      .getDownloadURL()
-      .then(url => url)
 
     fetch(this.idol.src!).then(_ => (this.promise = false))
   }
